@@ -1,26 +1,42 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ─── Neelkanth Finbuild — Design Tokens ─────────────────────────────────── */
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Brand colours */
+  --color-neelkanth-blue: #226bad;  /* Primary — nav, headings, links        */
+  --color-ink-navy:       #12283d;  /* Body text, dark headings               */
+  --color-paper:          #f3f5f7;  /* Page background                        */
+  --color-sun-ochre:      #c97d2c;  /* CTA accent only (Call now button)      */
+  --color-slate:          #5c6b78;  /* Secondary text, borders, dividers      */
+
+  /* Semantic aliases */
+  --color-background: var(--color-paper);
+  --color-foreground: var(--color-ink-navy);
+
+  /* Fonts */
+  --font-headline: var(--font-domine), Georgia, serif;
+  --font-body:     var(--font-ibm-plex-sans), system-ui, sans-serif;
+
+  /* Map Tailwind's default font-sans to our body font */
+  --font-sans: var(--font-body);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ─── Global baseline ─────────────────────────────────────────────────────── */
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-paper);
+  color: var(--color-ink-navy);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-headline);
+  color: var(--color-ink-navy);
 }
