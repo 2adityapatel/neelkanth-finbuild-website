@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 /* ─── Navigation data ─────────────────────────────────────────────────────── */
 
@@ -34,12 +35,23 @@ export default function Footer() {
 
           {/* Brand + about */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <p className="font-headline text-xl font-bold text-white leading-none">
-              Neelkanth Finbuild
-            </p>
-            <p className="text-[10px] font-body tracking-widest uppercase text-slate mt-1">
-              Limited · NBFC
-            </p>
+            <div className="flex items-center gap-3">
+              <Image
+                src="/logo.svg"
+                alt="Neelkanth Finbuild Limited"
+                width={44}
+                height={30}
+                className="h-10 w-auto shrink-0 brightness-0 invert"
+              />
+              <span className="leading-none">
+                <span className="block font-headline text-lg font-bold text-white">
+                  Neelkanth Finbuild
+                </span>
+                <span className="block text-[9px] font-body font-normal text-slate tracking-widest uppercase mt-0.5">
+                  Limited · NBFC
+                </span>
+              </span>
+            </div>
             <p className="mt-4 text-sm text-slate leading-relaxed">
               RBI-registered Non-Banking Financial Company offering personal and
               business loan solutions. Serving clients from New Delhi and
