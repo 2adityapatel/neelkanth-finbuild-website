@@ -39,9 +39,9 @@ export default function Footer() {
               <Image
                 src="/logo.svg"
                 alt="Neelkanth Finbuild Limited"
-                width={44}
-                height={30}
-                className="h-10 w-auto shrink-0 brightness-0 invert"
+                width={60}
+                height={48}
+                className="h-12 w-auto shrink-0 brightness-0 invert"
               />
               <span className="leading-none">
                 <span className="block font-headline text-lg font-bold text-white">
