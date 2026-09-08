@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import CTAButton from "./CTAButton";
 
 /* ─── Site config ─────────────────────────────────────────────────────────── */
@@ -42,12 +43,22 @@ export default function Header() {
         <div className="flex items-center justify-between h-16">
 
           {/* ── Logo ── */}
-          <Link href="/" onClick={closeMobile} className="flex-shrink-0 group">
-            <span className="font-headline text-xl font-bold text-neelkanth-blue group-hover:opacity-85 transition-opacity leading-none">
-              Neelkanth Finbuild
-            </span>
-            <span className="block text-[10px] font-body font-normal text-slate tracking-widest uppercase mt-0.5">
-              Limited · NBFC
+          <Link href="/" onClick={closeMobile} className="flex-shrink-0 flex items-center gap-3 hover:opacity-85 transition-opacity">
+            <Image
+              src="/logo.svg"
+              alt="Neelkanth Finbuild Limited"
+              width={55}
+              height={44}
+              priority
+              className="h-11 w-auto shrink-0"
+            />
+            <span className="leading-none">
+              <span className="block font-headline text-lg font-bold text-neelkanth-blue">
+                Neelkanth Finbuild
+              </span>
+              <span className="block text-[9px] font-body font-normal text-slate tracking-widest uppercase mt-0.5">
+                Limited · NBFC
+              </span>
             </span>
           </Link>
 
