@@ -140,7 +140,7 @@ export default function ContactPage() {
           {/* ── Right: CTA card ── */}
           <div className="lg:sticky lg:top-24 h-fit">
             <div className="rounded-2xl bg-neelkanth-blue px-7 py-8 text-white">
-              <h3 className="text-xl font-bold mb-3">Ready to enquire?</h3>
+              <h3 className="text-xl font-bold text-white mb-3">Ready to enquire?</h3>
               <p className="text-white/70 text-sm leading-relaxed mb-6">
                 The fastest way to check your eligibility and understand the
                 documentation required is to call us directly on our Guwahati

@@ -32,7 +32,7 @@ export default function HeroSection() {
               in New Delhi and Guwahati.
             </p>
 
-            <div className="mt-8 flex flex-col sm:flex-row gap-4 items-start">
+            <div className="mt-8 flex flex-col sm:flex-row gap-4 items-center">
               <CTAButton phone={HELPLINE} label="Call now — 0361-2221111" />
               <a
                 href="/products"

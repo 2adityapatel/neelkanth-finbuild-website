@@ -46,7 +46,7 @@ export default function AboutPage() {
     <div className="bg-paper min-h-screen">
 
       {/* ── Page header ── */}
-      <div className="bg-neelkanth-blue py-14 sm:py-20">
+      <div className="bg-ink-navy py-14 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-xs font-semibold text-white/50 uppercase tracking-widest mb-3">
             Company
@@ -95,8 +95,8 @@ export default function AboutPage() {
 
           {/* Legal details card */}
           <div className="rounded-2xl bg-white border border-slate/15 overflow-hidden">
-            <div className="bg-ink-navy px-6 py-4">
-              <p className="text-xs font-semibold text-white/60 uppercase tracking-widest">
+            <div className="bg-neelkanth-blue px-6 py-4">
+              <p className="text-xs font-semibold text-white/70 uppercase tracking-widest">
                 Legal details
               </p>
             </div>
