@@ -89,7 +89,7 @@ export default function WhatWeOfferSection() {
               >
                 {/* Card header */}
                 <div className="px-6 pt-6 pb-5 border-b border-slate/10">
-                  <span className="inline-block rounded-full bg-neelkanth-blue/10 px-3 py-0.5 text-xs font-semibold text-neelkanth-blue mb-3">
+                  <span className="inline-block w-fit rounded-full bg-neelkanth-blue/10 px-3 py-0.5 text-xs font-semibold text-neelkanth-blue mb-3">
                     {product.tag}
                   </span>
                   <h3 className="text-xl font-bold text-ink-navy">
@@ -144,7 +144,7 @@ export default function WhatWeOfferSection() {
                 className="rounded-2xl border border-slate/15 bg-paper overflow-hidden flex flex-col"
               >
                 <div className="px-6 pt-6 pb-5 flex-1 flex flex-col">
-                  <span className="inline-block rounded-full bg-neelkanth-blue/10 px-3 py-0.5 text-xs font-semibold text-neelkanth-blue mb-3">
+                  <span className="inline-block w-fit rounded-full bg-neelkanth-blue/10 px-3 py-0.5 text-xs font-semibold text-neelkanth-blue mb-3">
                     {product.tag}
                   </span>
                   <h3 className="text-xl font-bold text-ink-navy">
