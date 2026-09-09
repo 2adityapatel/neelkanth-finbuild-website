@@ -1,209 +1,209 @@
 import Link from "next/link";
 
+/* ─── Product Data with Clear Audience Orientation & Outcome Statements ────── */
+
 const PRODUCTS = [
   {
     id: "personal-loan",
-    href: "/products/personal-loan",
-    tag: "Individual",
+    audience: "For individuals",
+    badgeColor: "bg-neelkanth-blue/10 text-neelkanth-blue",
     title: "Personal Loan",
-    description:
-      "Unsecured financing for individuals with flexible repayment, minimal documentation, and quick access to funds.",
-    eligibility: "Age 18+ · Monthly income ₹25,000+",
-    highlights: [
-      "No collateral required",
-      "Debt consolidation",
-      "Flexible repayment",
-      "Minimal documentation",
-    ],
+    outcome:
+      "Immediate personal liquidity for medical, family, or educational milestones without pledging collateral.",
+    detail: "No collateral required · Flexible 12–60 month tenure",
+    eligibility: "Salaried or self-employed · Age 18+",
+    href: "/products/personal-loan",
     wide: false,
   },
   {
     id: "business-loan",
-    href: "/products/unsecured-business-loan",
-    tag: "Business",
+    audience: "For businesses",
+    badgeColor: "bg-sun-ochre/15 text-sun-ochre",
     title: "Business Loan",
-    description:
-      "Financing for established businesses — available both unsecured and secured against property.",
-    eligibility: "Age 18+ · Business vintage 2 years+",
-    wide: true, // two sub-types: unsecured + secured
-    subProducts: [
+    outcome:
+      "Operational cash flow and growth capital structured around commercial enterprise needs.",
+    wide: true,
+    variants: [
       {
         title: "Unsecured Business Loan",
+        tag: "No collateral",
+        outcome:
+          "Fast working capital based on your operational track record and 2+ years business vintage.",
         href: "/products/unsecured-business-loan",
-        note: "No collateral required",
-        points: ["Starts ₹5 lakhs", "Tenure 12–48 months", "Quick processing"],
       },
       {
         title: "Secured Business Loan",
+        tag: "Property-backed",
+        outcome:
+          "Higher credit limits and preferred interest rates pledged against commercial or residential property.",
         href: "/products/secured-business-loan",
-        note: "Property as collateral",
-        points: ["Starts ₹5 lakhs", "Tenure 12–48 months", "Attractive rate"],
       },
     ],
   },
   {
     id: "lap",
-    href: "/products/loan-against-property",
-    tag: "Secured",
+    audience: "Against property",
+    badgeColor: "bg-ink-navy/10 text-ink-navy",
     title: "Loan Against Property",
-    description:
-      "Leverage your residential or commercial property to access larger loan amounts at competitive rates.",
-    eligibility: "Age 18+ · Owned property required",
-    highlights: [
-      "Up to 85% of market value",
-      "Tenure 84 months+",
-      "Multipurpose use",
-      "Competitive rates",
-    ],
+    outcome:
+      "Unlock high-value liquidity up to 85% of your property market value for major expansion or debt consolidation.",
+    detail: "Up to 85% market value · Extended repayment tenures",
+    eligibility: "Owned residential or commercial property",
+    href: "/products/loan-against-property",
     wide: false,
   },
 ];
 
 export default function WhatWeOfferSection() {
   return (
-    <section className="bg-white py-16 sm:py-20">
+    <section className="bg-paper py-16 sm:py-20 border-t border-slate/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* Section header */}
-        <div className="mb-12">
-          <p className="text-xs font-semibold text-sun-ochre uppercase tracking-widest mb-2">
-            Our products
-          </p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-ink-navy">
-            What we offer
-          </h2>
-          <p className="mt-3 text-slate max-w-xl">
-            Three loan categories designed for individuals, businesses, and
-            property owners — each structured around your specific need.
-          </p>
+        {/* ── Section header with single 'Compare products' link ── */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
+          <div>
+            <p className="text-xs font-semibold text-sun-ochre uppercase tracking-widest mb-2">
+              Our financing programmes
+            </p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-ink-navy">
+              What we offer
+            </h2>
+            <p className="mt-3 text-slate max-w-xl text-sm sm:text-base leading-relaxed">
+              Three clear lending options, each aligned to a specific financial outcome.
+            </p>
+          </div>
+          <Link
+            href="/products"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-neelkanth-blue hover:underline underline-offset-4 self-start sm:self-end shrink-0"
+          >
+            Compare all loan products
+            <ArrowRight />
+          </Link>
         </div>
 
-        {/* Card grid — Business Loan wider */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr_1fr] gap-6">
+        {/* ── Product grid ── */}
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr_1fr] gap-6 items-stretch">
           {PRODUCTS.map((product) =>
             product.wide ? (
-              /* ── Business Loan — wide card with two sub-products ── */
+              /* ── Business Loan (Wide card with two distinct outcome options) ── */
               <div
                 key={product.id}
-                className="rounded-2xl border border-slate/15 bg-paper overflow-hidden flex flex-col"
+                className="rounded-2xl bg-white border border-slate/20 shadow-sm p-6 sm:p-8 flex flex-col justify-between hover:border-neelkanth-blue/30 transition-all"
               >
-                {/* Card header */}
-                <div className="px-6 pt-6 pb-5 border-b border-slate/10">
-                  <span className="inline-block w-fit rounded-full bg-neelkanth-blue/10 px-3 py-0.5 text-xs font-semibold text-neelkanth-blue mb-3">
-                    {product.tag}
-                  </span>
-                  <h3 className="text-xl font-bold text-ink-navy">
+                <div>
+                  <div className="flex items-center justify-between gap-2 mb-3">
+                    <span
+                      className={`inline-block rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wider ${product.badgeColor}`}
+                    >
+                      {product.audience}
+                    </span>
+                    <span className="text-xs font-medium text-slate/60">
+                      Vintage 2+ yrs
+                    </span>
+                  </div>
+
+                  <h3 className="text-2xl font-bold text-ink-navy mb-2">
                     {product.title}
                   </h3>
-                  <p className="mt-2 text-sm text-slate leading-relaxed">
-                    {product.description}
+                  <p className="text-sm text-slate leading-relaxed mb-6">
+                    {product.outcome}
                   </p>
-                  <p className="mt-3 text-xs text-slate/70">
-                    <span className="font-medium text-slate">Eligibility:</span>{" "}
-                    {product.eligibility}
-                  </p>
-                </div>
 
-                {/* Sub-products side by side */}
-                <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-slate/10">
-                  {product.subProducts?.map((sub) => (
-                    <div key={sub.title} className="px-5 py-5 flex flex-col gap-3">
-                      <div>
-                        <p className="text-[11px] font-semibold text-slate uppercase tracking-wider">
-                          {sub.note}
-                        </p>
-                        <h4 className="mt-1 text-base font-semibold text-ink-navy">
-                          {sub.title}
-                        </h4>
-                      </div>
-                      <ul className="space-y-1.5">
-                        {sub.points.map((pt) => (
-                          <li
-                            key={pt}
-                            className="flex items-start gap-2 text-sm text-slate"
-                          >
-                            <CheckIcon />
-                            {pt}
-                          </li>
-                        ))}
-                      </ul>
+                  {/* Two compact outcome options */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-slate/10">
+                    {product.variants?.map((v) => (
                       <Link
-                        href={sub.href}
-                        className="mt-auto inline-flex items-center gap-1 text-sm font-medium text-neelkanth-blue hover:underline underline-offset-4"
+                        key={v.title}
+                        href={v.href}
+                        className="group/variant rounded-xl bg-paper p-4 flex flex-col justify-between border border-slate/10 hover:border-neelkanth-blue/30 hover:bg-neelkanth-blue/[0.02] transition-colors"
                       >
-                        Learn more <ArrowRight />
+                        <div>
+                          <div className="flex items-center justify-between mb-1.5">
+                            <h4 className="text-sm font-bold text-ink-navy group-hover/variant:text-neelkanth-blue transition-colors">
+                              {v.title}
+                            </h4>
+                          </div>
+                          <span className="inline-block text-[11px] font-semibold text-slate/70 uppercase tracking-wider mb-2">
+                            {v.tag}
+                          </span>
+                          <p className="text-xs text-slate leading-relaxed">
+                            {v.outcome}
+                          </p>
+                        </div>
+                        <span className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-neelkanth-blue group-hover/variant:underline">
+                          View details <ArrowRight />
+                        </span>
                       </Link>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
               </div>
             ) : (
-              /* ── Standard single card ── */
+              /* ── Individual / Property cards ── */
               <div
                 key={product.id}
-                className="rounded-2xl border border-slate/15 bg-paper overflow-hidden flex flex-col"
+                className="rounded-2xl bg-white border border-slate/20 shadow-sm p-6 sm:p-8 flex flex-col justify-between hover:border-neelkanth-blue/30 transition-all"
               >
-                <div className="px-6 pt-6 pb-5 flex-1 flex flex-col">
-                  <span className="inline-block w-fit rounded-full bg-neelkanth-blue/10 px-3 py-0.5 text-xs font-semibold text-neelkanth-blue mb-3">
-                    {product.tag}
-                  </span>
-                  <h3 className="text-xl font-bold text-ink-navy">
+                <div>
+                  <div className="flex items-center justify-between gap-2 mb-3">
+                    <span
+                      className={`inline-block rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wider ${product.badgeColor}`}
+                    >
+                      {product.audience}
+                    </span>
+                  </div>
+
+                  <h3 className="text-2xl font-bold text-ink-navy mb-2">
                     {product.title}
                   </h3>
-                  <p className="mt-2 text-sm text-slate leading-relaxed flex-1">
-                    {product.description}
+                  <p className="text-sm text-slate leading-relaxed mb-5">
+                    {product.outcome}
                   </p>
 
-                  <ul className="mt-4 space-y-2">
-                    {product.highlights?.map((h) => (
-                      <li
-                        key={h}
-                        className="flex items-start gap-2 text-sm text-slate"
-                      >
-                        <CheckIcon />
-                        {h}
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="pt-4 border-t border-slate/10 space-y-2">
+                    <p className="text-xs text-slate/80">
+                      <strong className="text-ink-navy font-semibold">Key terms:</strong>{" "}
+                      {product.detail}
+                    </p>
+                    <p className="text-xs text-slate/70">
+                      <strong className="text-ink-navy font-semibold">Eligibility:</strong>{" "}
+                      {product.eligibility}
+                    </p>
+                  </div>
+                </div>
 
-                  <p className="mt-4 text-xs text-slate/70">
-                    <span className="font-medium text-slate">Eligibility:</span>{" "}
-                    {product.eligibility}
-                  </p>
-
+                <div className="mt-6 pt-4 border-t border-slate/10">
                   <Link
-                    href={product.href}
-                    className="mt-5 inline-flex items-center gap-1 text-sm font-medium text-neelkanth-blue hover:underline underline-offset-4"
+                    href={product.href!}
+                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-neelkanth-blue hover:underline underline-offset-4"
                   >
-                    Learn more <ArrowRight />
+                    View details &amp; criteria
+                    <ArrowRight />
                   </Link>
                 </div>
               </div>
             )
           )}
         </div>
+
+        {/* ── Compact comparison row ── */}
+        <div className="mt-10 rounded-xl bg-white border border-slate/15 p-5 hidden md:flex items-center justify-between gap-6 text-xs text-slate">
+          <div className="flex items-center gap-2">
+            <span className="h-2 w-2 rounded-full bg-neelkanth-blue shrink-0" />
+            <span><strong>Personal:</strong> ₹50k–₹15L · Unsecured · Salaried/Self-employed</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="h-2 w-2 rounded-full bg-sun-ochre shrink-0" />
+            <span><strong>Business:</strong> Starts ₹5L · Secured or Unsecured · 2+ yr vintage</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="h-2 w-2 rounded-full bg-ink-navy shrink-0" />
+            <span><strong>LAP:</strong> Up to 85% market value · 84+ mos tenure · Residential/Commercial</span>
+          </div>
+        </div>
+
       </div>
     </section>
-  );
-}
-
-function CheckIcon() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="14"
-      height="14"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="#226BAD"
-      strokeWidth="2.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="shrink-0 mt-0.5"
-      aria-hidden="true"
-    >
-      <polyline points="20 6 9 17 4 12" />
-    </svg>
   );
 }
 
@@ -216,7 +216,7 @@ function ArrowRight() {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="2"
+      strokeWidth="2.5"
       strokeLinecap="round"
       strokeLinejoin="round"
       aria-hidden="true"
