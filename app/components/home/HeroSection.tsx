@@ -1,141 +1,85 @@
+import Link from "next/link";
+import Image from "next/image";
 import CTAButton from "@/app/components/CTAButton";
 
 const HELPLINE = "0361-2221111";
 
 export default function HeroSection() {
   return (
-    <section className="relative overflow-hidden bg-paper py-16 sm:py-20 lg:py-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_420px] gap-12 lg:gap-16 items-center">
+    <section className="relative overflow-hidden bg-ink-navy text-white py-12 sm:py-24 lg:py-28">
+      {/* ── Background Image + Gradient Overlay ── */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/hero-bg.jpg"
+          alt="Neelkanth Finbuild Corporate Headquarters & Financial Center"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center brightness-90"
+        />
+        {/* Dual gradient overlay: deep navy on the left for maximum text contrast, lighter on the right to show architectural depth */}
+        <div className="absolute inset-0 bg-gradient-to-r from-ink-navy via-ink-navy/90 to-ink-navy/70" />
+        <div className="absolute inset-0 bg-ink-navy/30 backdrop-blur-[0.5px]" />
+      </div>
 
-          {/* ── Text ── */}
-          <div>
-            {/* Trust badge */}
-            <div className="inline-flex items-center gap-2 rounded-full border border-neelkanth-blue/20 bg-white px-4 py-1.5 mb-6">
-              <span className="h-1.5 w-1.5 rounded-full bg-neelkanth-blue shrink-0" />
-              <span className="text-xs font-medium text-neelkanth-blue tracking-wide">
-                Established 1996 · RBI-registered NBFC
-              </span>
-            </div>
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl">
 
-            <h1 className="text-4xl sm:text-5xl font-bold text-ink-navy leading-tight tracking-tight">
-              Trusted financing,{" "}
-              <span className="text-neelkanth-blue">
-                backed by three decades
-              </span>{" "}
-              of experience.
-            </h1>
-
-            <p className="mt-5 text-lg text-slate leading-relaxed max-w-xl">
-              Personal loans, business loans, and loan against property —
-              structured for real needs, offered with transparency, from offices
-              in New Delhi and Guwahati.
-            </p>
-
-            <div className="mt-8 flex flex-col sm:flex-row gap-4 items-center">
-              <CTAButton phone={HELPLINE} label="Call now — 0361-2221111" />
-              <a
-                href="/products"
-                className="inline-flex items-center gap-1.5 text-sm font-medium text-neelkanth-blue hover:underline underline-offset-4"
-              >
-                View our loan products
-                <ArrowRight />
-              </a>
-            </div>
-
-            {/* Key facts strip */}
-            <div className="mt-10 pt-8 border-t border-slate/20 flex flex-wrap gap-x-8 gap-y-3">
-              {[
-                { label: "Incorporated", value: "1996" },
-                { label: "Registration", value: "NBFC · RBI" },
-                { label: "Offices", value: "Delhi & Guwahati" },
-              ].map((fact) => (
-                <div key={fact.label}>
-                  <p className="text-[11px] font-medium text-slate uppercase tracking-widest">
-                    {fact.label}
-                  </p>
-                  <p className="text-sm font-semibold text-ink-navy mt-0.5">
-                    {fact.value}
-                  </p>
-                </div>
-              ))}
-            </div>
+          {/* 1. One proof line */}
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-md px-3.5 sm:px-4 py-1.5 mb-4 sm:mb-6">
+            <span className="h-1.5 w-1.5 rounded-full bg-sun-ochre shrink-0" />
+            <span className="text-xs font-medium text-white/90 tracking-wide">
+              Established 1996 · RBI-registered NBFC
+            </span>
           </div>
 
-          {/* ── Geometric illustration ── */}
-          <div className="hidden lg:block" aria-hidden="true">
-            <GeometricIllustration />
+          {/* 2. Main headline */}
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight sm:leading-[1.15] tracking-tight">
+            Trusted financing,{" "}
+            <span className="text-white/65">
+              backed by three decades
+            </span>{" "}
+            of experience.
+          </h1>
+
+          {/* 3. One concise sentence */}
+          <p className="mt-3 sm:mt-5 text-sm sm:text-lg text-white/80 leading-relaxed max-w-xl">
+            Personal, business, and property-backed loans structured with transparent terms.
+          </p>
+
+          {/* 4. One primary CTA + 5. One secondary text link */}
+          <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-5 items-start sm:items-center">
+            <CTAButton phone={HELPLINE} label="Call now — 0361-2221111" className="w-full sm:w-auto justify-center" />
+            <Link
+              href="/products"
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-white/85 hover:text-white underline-offset-4 hover:underline transition-colors py-1 self-center sm:self-auto"
+            >
+              View our loan products
+              <ArrowRight />
+            </Link>
           </div>
+
+          {/* 6. Credential strip — 3 columns on mobile so all facts stay above the fold */}
+          <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-white/15 grid grid-cols-3 sm:flex sm:flex-wrap gap-2 sm:gap-x-10 sm:gap-y-4">
+            {[
+              { label: "Incorporated", value: "1996" },
+              { label: "Registration", value: "NBFC · RBI" },
+              { label: "Offices", value: "Delhi & Guwahati" },
+            ].map((fact) => (
+              <div key={fact.label}>
+                <p className="text-[10px] sm:text-[11px] font-semibold text-white/40 uppercase tracking-wider sm:tracking-widest">
+                  {fact.label}
+                </p>
+                <p className="text-xs sm:text-sm font-semibold text-white mt-0.5 whitespace-nowrap">
+                  {fact.value}
+                </p>
+              </div>
+            ))}
+          </div>
+
         </div>
       </div>
     </section>
-  );
-}
-
-function GeometricIllustration() {
-  return (
-    <svg
-      viewBox="0 0 420 380"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="w-full h-full"
-    >
-      {/* Concentric rectangles — architectural / blueprint feel */}
-      <rect x="20" y="20" width="380" height="340" rx="6"
-        stroke="#226BAD" strokeOpacity="0.08" strokeWidth="1.5" />
-      <rect x="55" y="55" width="310" height="270" rx="4"
-        stroke="#226BAD" strokeOpacity="0.11" strokeWidth="1" />
-      <rect x="90" y="90" width="240" height="200" rx="4"
-        fill="#226BAD" fillOpacity="0.04"
-        stroke="#226BAD" strokeOpacity="0.14" strokeWidth="1" />
-
-      {/* Dashed arc — top right */}
-      <circle cx="400" cy="20" r="100"
-        stroke="#226BAD" strokeOpacity="0.08" strokeWidth="1"
-        strokeDasharray="4 7" />
-      <circle cx="400" cy="20" r="60"
-        stroke="#C97D2C" strokeOpacity="0.12" strokeWidth="1"
-        strokeDasharray="3 8" />
-
-      {/* Central focal block */}
-      <rect x="145" y="145" width="130" height="90" rx="3"
-        fill="#226BAD" fillOpacity="0.07"
-        stroke="#226BAD" strokeOpacity="0.18" strokeWidth="1" />
-      <rect x="165" y="163" width="90" height="54" rx="2"
-        fill="#226BAD" fillOpacity="0.10" />
-
-      {/* Horizontal rule lines */}
-      <line x1="20" y1="220" x2="145" y2="220"
-        stroke="#226BAD" strokeOpacity="0.12" strokeWidth="1" />
-      <line x1="275" y1="220" x2="400" y2="220"
-        stroke="#226BAD" strokeOpacity="0.12" strokeWidth="1" />
-
-      {/* Vertical rule lines */}
-      <line x1="210" y1="20" x2="210" y2="145"
-        stroke="#226BAD" strokeOpacity="0.10" strokeWidth="1" />
-      <line x1="210" y1="235" x2="210" y2="360"
-        stroke="#226BAD" strokeOpacity="0.10" strokeWidth="1" />
-
-      {/* Sun Ochre accent dots */}
-      <circle cx="388" cy="32" r="10" fill="#C97D2C" fillOpacity="0.28" />
-      <circle cx="388" cy="32" r="5"  fill="#C97D2C" fillOpacity="0.45" />
-      <circle cx="35"  cy="348" r="7" fill="#C97D2C" fillOpacity="0.20" />
-      <circle cx="370" cy="348" r="5" fill="#226BAD" fillOpacity="0.22" />
-
-      {/* Dot grid — bottom right */}
-      {Array.from({ length: 5 }).map((_, row) =>
-        Array.from({ length: 5 }).map((_, col) => (
-          <circle
-            key={`${row}-${col}`}
-            cx={310 + col * 18}
-            cy={270 + row * 18}
-            r="1.8"
-            fill="#226BAD"
-            fillOpacity={0.12 + row * 0.02}
-          />
-        ))
-      )}
-    </svg>
   );
 }
 
