@@ -66,10 +66,10 @@ export default function WhatWeOfferSection() {
               Our financing programmes
             </p>
             <h2 className="text-3xl sm:text-4xl font-bold text-ink-navy">
-              What we offer
+              What do you need finance for?
             </h2>
             <p className="mt-3 text-slate max-w-xl text-sm sm:text-base leading-relaxed">
-              Three clear lending options, each aligned to a specific financial outcome.
+              Choose the option closest to your purpose. We&apos;ll guide you through eligibility and documents when you call.
             </p>
           </div>
           <Link
@@ -186,20 +186,18 @@ export default function WhatWeOfferSection() {
           )}
         </div>
 
-        {/* ── Compact comparison row ── */}
-        <div className="mt-10 rounded-xl bg-white border border-slate/15 p-5 hidden md:flex items-center justify-between gap-6 text-xs text-slate">
-          <div className="flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full bg-neelkanth-blue shrink-0" />
-            <span><strong>Personal:</strong> ₹50k–₹15L · Unsecured · Salaried/Self-employed</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full bg-sun-ochre shrink-0" />
-            <span><strong>Business:</strong> Starts ₹5L · Secured or Unsecured · 2+ yr vintage</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full bg-ink-navy shrink-0" />
-            <span><strong>LAP:</strong> Up to 85% market value · 84+ mos tenure · Residential/Commercial</span>
-          </div>
+        {/* ── Lightweight reassurance line ── */}
+        <div className="mt-10 pt-6 border-t border-slate/15 text-center sm:text-left">
+          <p className="text-sm text-slate leading-relaxed">
+            Not sure which option fits?{" "}
+            <a
+              href="tel:03612221111"
+              className="font-semibold text-neelkanth-blue hover:underline underline-offset-4"
+            >
+              Call 0361-2221111
+            </a>{" "}
+            and we&apos;ll help identify the appropriate loan product.
+          </p>
         </div>
 
       </div>
