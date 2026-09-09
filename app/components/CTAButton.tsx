@@ -20,7 +20,7 @@ export default function CTAButton({
   className = "",
 }: CTAButtonProps) {
   const base =
-    "inline-flex items-center gap-2 rounded-full bg-sun-ochre px-5 py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sun-ochre";
+    "inline-flex items-center gap-2 rounded-full bg-sun-ochre px-5 py-2.5 text-sm font-semibold text-white whitespace-nowrap transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sun-ochre";
 
   if (mode === "whatsapp") {
     const waNumber = phone.replace(/\D/g, "");

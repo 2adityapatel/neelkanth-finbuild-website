@@ -103,8 +103,17 @@ export default function Header() {
           </nav>
 
           {/* ── Desktop CTA + mobile hamburger ── */}
-          <div className="flex items-center gap-3">
-            <CTAButton phone={HELPLINE} className="hidden sm:inline-flex" />
+          <div className="flex items-center gap-2 sm:gap-3">
+            {/* Header CTA: compact 'Call' on mobile, 'Call now' on desktop (single responsive button) */}
+            <a
+              href={`tel:${HELPLINE.replace(/\D/g, "")}`}
+              aria-label="Call 0361-2221111"
+              className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full bg-sun-ochre px-3 sm:px-5 py-1.5 sm:py-2.5 text-xs sm:text-sm font-semibold text-white whitespace-nowrap shrink-0 hover:opacity-90 transition-opacity focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sun-ochre"
+            >
+              <PhoneIcon />
+              <span className="sm:hidden">Call</span>
+              <span className="hidden sm:inline">Call now</span>
+            </a>
             <button
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
               aria-expanded={mobileOpen}
@@ -232,6 +241,25 @@ function CloseIcon() {
     >
       <line x1="18" y1="6" x2="6" y2="18" />
       <line x1="6" y1="6" x2="18" y2="18" />
+    </svg>
+  );
+}
+
+function PhoneIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="13"
+      height="13"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 5.61 5.61l.76-.76a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.73 16z" />
     </svg>
   );
 }
