@@ -138,34 +138,29 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* ── Directors ── */}
+        {/* ── Board of Directors (Clean Governance Table) ── */}
         <section>
-          <h2 className="text-2xl font-bold text-ink-navy mb-2">Directors</h2>
-          <p className="text-slate text-sm mb-8">
-            All directors are listed simply as &ldquo;Director.&rdquo;
+          <h2 className="text-2xl font-bold text-ink-navy mb-2">Board of Directors</h2>
+          <p className="text-slate text-sm mb-6">
+            Governed by an experienced Board of Directors in compliance with applicable statutory and regulatory requirements.
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            {DIRECTORS.map((d) => (
-              <div
-                key={d.name}
-                className="rounded-2xl bg-white border border-slate/15 px-6 py-6 flex flex-col gap-3"
-              >
-                {/* Avatar */}
-                <div className="h-12 w-12 rounded-full bg-neelkanth-blue/10 flex items-center justify-center">
-                  <PersonIcon />
+          <div className="rounded-2xl bg-white border border-slate/15 overflow-hidden shadow-sm">
+            <div className="divide-y divide-slate/10">
+              {DIRECTORS.map((d) => (
+                <div
+                  key={d.name}
+                  className="px-6 py-5 flex flex-col sm:flex-row sm:items-center justify-between gap-2 hover:bg-paper/50 transition-colors"
+                >
+                  <div>
+                    <p className="font-semibold text-ink-navy text-base">{d.name}</p>
+                    <p className="text-xs text-slate mt-0.5">{d.credential}{d.note ? ` · ${d.note}` : ""}</p>
+                  </div>
+                  <span className="inline-block text-[10px] font-semibold text-neelkanth-blue uppercase tracking-widest bg-neelkanth-blue/10 rounded-full px-3 py-1 w-fit shrink-0">
+                    Director
+                  </span>
                 </div>
-                <div>
-                  <p className="font-semibold text-ink-navy">{d.name}</p>
-                  <p className="text-sm text-slate mt-0.5">{d.credential}</p>
-                  {d.note && (
-                    <p className="text-xs text-slate/70 mt-0.5">{d.note}</p>
-                  )}
-                </div>
-                <span className="inline-block mt-auto text-[10px] font-semibold text-neelkanth-blue uppercase tracking-widest border border-neelkanth-blue/20 rounded-full px-3 py-0.5 w-fit">
-                  Director
-                </span>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </section>
 
@@ -218,15 +213,5 @@ export default function AboutPage() {
 
       </div>
     </div>
-  );
-}
-
-function PersonIcon() {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
-      fill="none" stroke="#226BAD" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-      <circle cx="12" cy="7" r="4" />
-    </svg>
   );
 }
