@@ -1,9 +1,9 @@
 const STEPS = [
   {
     number: "01",
-    title: "Call or WhatsApp us",
+    title: "Call us",
     description:
-      "Reach us at 0361-2221111 or on WhatsApp. Tell us the loan type you need and we'll guide you through the eligibility and documentation requirements.",
+      "Reach us at 0361-2221111. Tell us the loan type you need and we'll guide you through the eligibility and documentation requirements.",
     icon: <PhoneIcon />,
   },
   {
