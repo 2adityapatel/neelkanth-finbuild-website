@@ -21,7 +21,7 @@ const PROOFS = [
     tag: "Corporate Identity",
     title: "Public Limited & Accountable",
     detail:
-      "CIN: U65921DL1996PLC081190. Led by active directors Sri Vijay Kumar Jasrasaria and Smt. Pushpa Jasrasaria — an established corporate entity with human accountability, not an anonymous app.",
+      "CIN: U70101DL1996PLC081196. Led by active directors Vijay Kumar Jasrasaria, Ashish Jasrasaria, and Vineeta Jasrasaria — an established corporate entity with human accountability, not an anonymous app.",
     linkText: "Our corporate governance",
     href: "/about",
     icon: <BuildingIcon />,
