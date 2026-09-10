@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import CTAButton from "./CTAButton";
@@ -31,6 +31,17 @@ const NAV_LINKS = [
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 12);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const closeMobile = () => {
     setMobileOpen(false);
@@ -38,7 +49,13 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-white border-b border-slate/20 shadow-sm">
+    <header
+      className={`sticky top-0 z-50 bg-white transition-[box-shadow,border-color] duration-[160ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+        isScrolled
+          ? "border-b border-slate/25 shadow-sm shadow-ink-navy/5"
+          : "border-b border-slate/15 shadow-none"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
 
@@ -108,7 +125,7 @@ export default function Header() {
             <a
               href={`tel:${HELPLINE.replace(/\D/g, "")}`}
               aria-label="Call 0361-2221111"
-              className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full bg-sun-ochre px-3 sm:px-5 py-1.5 sm:py-2.5 text-xs sm:text-sm font-semibold text-white whitespace-nowrap shrink-0 hover:opacity-90 transition-opacity focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sun-ochre"
+              className="btn-press inline-flex items-center gap-1.5 sm:gap-2 rounded-full bg-sun-ochre px-3 sm:px-5 py-1.5 sm:py-2.5 text-xs sm:text-sm font-semibold text-white whitespace-nowrap shrink-0 hover:opacity-90 transition-opacity focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sun-ochre"
             >
               <PhoneIcon />
               <span className="sm:hidden">Call</span>

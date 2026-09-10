@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import AboutTimeline from "@/app/components/about/AboutTimeline";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -110,7 +111,10 @@ export default function AboutPage() {
                 { label: "Converted to Limited", value: "31 August 2004" },
                 { label: "Regulator", value: "Reserve Bank of India" },
               ].map((row) => (
-                <div key={row.label} className="flex justify-between gap-6 px-6 py-3.5">
+                <div
+                  key={row.label}
+                  className="flex justify-between gap-6 px-6 py-3.5 hover:bg-paper/60 transition-colors duration-[160ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
+                >
                   <span className="text-sm text-slate">{row.label}</span>
                   <span className="text-sm font-semibold text-ink-navy text-right">{row.value}</span>
                 </div>
@@ -124,18 +128,7 @@ export default function AboutPage() {
           <h2 className="text-2xl font-bold text-ink-navy mb-8">
             Company history
           </h2>
-          <div className="relative border-l-2 border-neelkanth-blue/20 ml-3 space-y-8">
-            {TIMELINE.map((item) => (
-              <div key={item.date} className="relative pl-8">
-                {/* Dot */}
-                <div className="absolute -left-[9px] top-1 h-4 w-4 rounded-full border-2 border-neelkanth-blue bg-white" />
-                <p className="text-xs font-semibold text-neelkanth-blue uppercase tracking-wider mb-1">
-                  {item.date}
-                </p>
-                <p className="text-slate leading-relaxed">{item.event}</p>
-              </div>
-            ))}
-          </div>
+          <AboutTimeline items={TIMELINE} />
         </section>
 
         {/* ── Board of Directors (Clean Governance Table) ── */}
