@@ -38,7 +38,7 @@ export default function ProductPageTemplate({
   breadcrumbLabel,
 }: ProductPageTemplateProps) {
   return (
-    <div className="bg-paper min-h-screen">
+    <div className="bg-paper">
 
       {/* ── Breadcrumb ── */}
       <div className="border-b border-slate/15 bg-white">
@@ -133,7 +133,7 @@ export default function ProductPageTemplate({
 
             {/* CTA card */}
             <div className="rounded-2xl bg-paper border border-slate/15 px-6 py-6 text-center">
-              <p className="text-sm font-semibold text-ink-navy mb-1">Ready to apply?</p>
+              <p className="text-sm font-semibold text-ink-navy mb-1">Speak to a lending representative</p>
               <p className="text-xs text-slate mb-4">
                 Call us to check your eligibility and get a full document list.
               </p>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import AboutTimeline from "@/app/components/about/AboutTimeline";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -46,7 +47,7 @@ export default function AboutPage() {
     <div className="bg-paper min-h-screen">
 
       {/* ── Page header ── */}
-      <div className="bg-neelkanth-blue py-14 sm:py-20">
+      <div className="bg-ink-navy py-14 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-xs font-semibold text-white/50 uppercase tracking-widest mb-3">
             Company
@@ -95,8 +96,8 @@ export default function AboutPage() {
 
           {/* Legal details card */}
           <div className="rounded-2xl bg-white border border-slate/15 overflow-hidden">
-            <div className="bg-ink-navy px-6 py-4">
-              <p className="text-xs font-semibold text-white/60 uppercase tracking-widest">
+            <div className="bg-neelkanth-blue px-6 py-4">
+              <p className="text-xs font-semibold text-white/70 uppercase tracking-widest">
                 Legal details
               </p>
             </div>
@@ -110,7 +111,10 @@ export default function AboutPage() {
                 { label: "Converted to Limited", value: "31 August 2004" },
                 { label: "Regulator", value: "Reserve Bank of India" },
               ].map((row) => (
-                <div key={row.label} className="flex justify-between gap-6 px-6 py-3.5">
+                <div
+                  key={row.label}
+                  className="flex justify-between gap-6 px-6 py-3.5 hover:bg-paper/60 transition-colors duration-[160ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
+                >
                   <span className="text-sm text-slate">{row.label}</span>
                   <span className="text-sm font-semibold text-ink-navy text-right">{row.value}</span>
                 </div>
@@ -124,48 +128,32 @@ export default function AboutPage() {
           <h2 className="text-2xl font-bold text-ink-navy mb-8">
             Company history
           </h2>
-          <div className="relative border-l-2 border-neelkanth-blue/20 ml-3 space-y-8">
-            {TIMELINE.map((item) => (
-              <div key={item.date} className="relative pl-8">
-                {/* Dot */}
-                <div className="absolute -left-[9px] top-1 h-4 w-4 rounded-full border-2 border-neelkanth-blue bg-white" />
-                <p className="text-xs font-semibold text-neelkanth-blue uppercase tracking-wider mb-1">
-                  {item.date}
-                </p>
-                <p className="text-slate leading-relaxed">{item.event}</p>
-              </div>
-            ))}
-          </div>
+          <AboutTimeline items={TIMELINE} />
         </section>
 
-        {/* ── Directors ── */}
+        {/* ── Board of Directors (Clean Governance Table) ── */}
         <section>
-          <h2 className="text-2xl font-bold text-ink-navy mb-2">Directors</h2>
-          <p className="text-slate text-sm mb-8">
-            All directors are listed simply as &ldquo;Director.&rdquo;
+          <h2 className="text-2xl font-bold text-ink-navy mb-2">Board of Directors</h2>
+          <p className="text-slate text-sm mb-6">
+            Governed by an experienced Board of Directors in compliance with applicable statutory and regulatory requirements.
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            {DIRECTORS.map((d) => (
-              <div
-                key={d.name}
-                className="rounded-2xl bg-white border border-slate/15 px-6 py-6 flex flex-col gap-3"
-              >
-                {/* Avatar */}
-                <div className="h-12 w-12 rounded-full bg-neelkanth-blue/10 flex items-center justify-center">
-                  <PersonIcon />
+          <div className="rounded-2xl bg-white border border-slate/15 overflow-hidden shadow-sm">
+            <div className="divide-y divide-slate/10">
+              {DIRECTORS.map((d) => (
+                <div
+                  key={d.name}
+                  className="px-6 py-5 flex flex-col sm:flex-row sm:items-center justify-between gap-2 hover:bg-paper/50 transition-colors"
+                >
+                  <div>
+                    <p className="font-semibold text-ink-navy text-base">{d.name}</p>
+                    <p className="text-xs text-slate mt-0.5">{d.credential}{d.note ? ` · ${d.note}` : ""}</p>
+                  </div>
+                  <span className="inline-block text-[10px] font-semibold text-neelkanth-blue uppercase tracking-widest bg-neelkanth-blue/10 rounded-full px-3 py-1 w-fit shrink-0">
+                    Director
+                  </span>
                 </div>
-                <div>
-                  <p className="font-semibold text-ink-navy">{d.name}</p>
-                  <p className="text-sm text-slate mt-0.5">{d.credential}</p>
-                  {d.note && (
-                    <p className="text-xs text-slate/70 mt-0.5">{d.note}</p>
-                  )}
-                </div>
-                <span className="inline-block mt-auto text-[10px] font-semibold text-neelkanth-blue uppercase tracking-widest border border-neelkanth-blue/20 rounded-full px-3 py-0.5 w-fit">
-                  Director
-                </span>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </section>
 
@@ -218,15 +206,5 @@ export default function AboutPage() {
 
       </div>
     </div>
-  );
-}
-
-function PersonIcon() {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
-      fill="none" stroke="#226BAD" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-      <circle cx="12" cy="7" r="4" />
-    </svg>
   );
 }

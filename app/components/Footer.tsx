@@ -47,27 +47,27 @@ export default function Footer() {
                 <span className="block font-headline text-lg font-bold text-white">
                   Neelkanth Finbuild
                 </span>
-                <span className="block text-[9px] font-body font-normal text-slate tracking-widest uppercase mt-0.5">
+                <span className="block text-[9px] font-body font-normal text-white/50 tracking-widest uppercase mt-0.5">
                   Limited · NBFC
                 </span>
               </span>
             </div>
-            <p className="mt-4 text-sm text-slate leading-relaxed">
+            <p className="mt-4 text-sm text-white/70 leading-relaxed">
               RBI-registered Non-Banking Financial Company offering personal and
               business loan solutions. Serving clients from New Delhi and
               Guwahati since 1996.
             </p>
-            <p className="mt-4 text-xs text-slate/60">
+            <p className="mt-4 text-xs text-white/40">
               CIN: U70101DL1996PLC081196
             </p>
-            <p className="mt-1 text-xs text-slate/60">
+            <p className="mt-1 text-xs text-white/40">
               PAN: AAACN3882C
             </p>
           </div>
 
           {/* Products */}
           <div>
-            <h3 className="text-xs font-semibold text-white/60 uppercase tracking-widest mb-4">
+            <h3 className="text-xs font-semibold text-white uppercase tracking-widest mb-4">
               Products
             </h3>
             <ul className="space-y-2.5">
@@ -75,7 +75,7 @@ export default function Footer() {
                 <li key={p.href}>
                   <Link
                     href={p.href}
-                    className="text-sm text-slate hover:text-white transition-colors"
+                    className="text-sm text-white/65 hover:text-white transition-colors"
                   >
                     {p.label}
                   </Link>
@@ -86,7 +86,7 @@ export default function Footer() {
 
           {/* Company */}
           <div>
-            <h3 className="text-xs font-semibold text-white/60 uppercase tracking-widest mb-4">
+            <h3 className="text-xs font-semibold text-white uppercase tracking-widest mb-4">
               Company
             </h3>
             <ul className="space-y-2.5">
@@ -94,7 +94,7 @@ export default function Footer() {
                 <li key={l.href}>
                   <Link
                     href={l.href}
-                    className="text-sm text-slate hover:text-white transition-colors"
+                    className="text-sm text-white/65 hover:text-white transition-colors"
                   >
                     {l.label}
                   </Link>
@@ -105,10 +105,10 @@ export default function Footer() {
 
           {/* Offices + contact */}
           <div>
-            <h3 className="text-xs font-semibold text-white/60 uppercase tracking-widest mb-4">
+            <h3 className="text-xs font-semibold text-white uppercase tracking-widest mb-4">
               Contact
             </h3>
-            <address className="not-italic text-sm text-slate space-y-4">
+            <address className="not-italic text-sm text-white/65 space-y-4">
               <div>
                 <p className="text-[10px] font-semibold text-white/50 uppercase tracking-wider mb-1">
                   Registered Office
@@ -164,20 +164,20 @@ export default function Footer() {
               <Link
                 key={l.href}
                 href={l.href}
-                className="text-xs text-slate/60 hover:text-white transition-colors"
+                className="text-xs text-white/50 hover:text-white transition-colors"
               >
                 {l.label}
               </Link>
             ))}
           </nav>
-          <p className="text-xs text-slate/40 shrink-0">
+          <p className="text-xs text-white/40 shrink-0">
             &copy; {new Date().getFullYear()} Neelkanth Finbuild Limited.
             All rights reserved.
           </p>
         </div>
 
         {/* ── NBFC regulatory disclaimer ── */}
-        <p className="mt-5 text-xs text-slate/35 leading-relaxed max-w-3xl">
+        <p className="mt-5 text-xs text-white/45 leading-relaxed max-w-3xl">
           Neelkanth Finbuild Limited is registered with the Reserve Bank of
           India as a Non-Banking Financial Company (NBFC). Loan disbursals are
           subject to credit assessment and applicable terms and conditions.
@@ -189,3 +189,4 @@ export default function Footer() {
     </footer>
   );
 }
+

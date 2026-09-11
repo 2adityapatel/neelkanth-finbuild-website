@@ -52,7 +52,7 @@ export default function FAQSection() {
                 key={faq.q}
                 className="group py-1"
               >
-                <summary className="flex items-start justify-between gap-4 py-4 cursor-pointer list-none select-none text-ink-navy font-medium hover:text-neelkanth-blue transition-colors">
+                <summary className="flex items-start justify-between gap-4 py-4 cursor-pointer list-none select-none text-ink-navy font-medium hover:text-neelkanth-blue transition-colors duration-[160ms] ease-[cubic-bezier(0.22,1,0.36,1)]">
                   <span>{faq.q}</span>
                   {/* Chevron rotates when open */}
                   <svg
@@ -65,7 +65,7 @@ export default function FAQSection() {
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="shrink-0 mt-0.5 transition-transform group-open:rotate-180 text-slate"
+                    className="shrink-0 mt-0.5 transition-transform duration-[200ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-open:rotate-180 text-slate"
                     aria-hidden="true"
                   >
                     <polyline points="6 9 12 15 18 9" />

@@ -20,9 +20,22 @@
 
   /* Map Tailwind's default font-sans to our body font */
   --font-sans: var(--font-body);
+
+  /* Motion tokens */
+  --ease-institutional: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 160ms;
+  --duration-std: 220ms;
+  --duration-reveal: 360ms;
 }
 
 /* ─── Global baseline ─────────────────────────────────────────────────────── */
+
+:root {
+  --ease-institutional: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 160ms;
+  --duration-std: 220ms;
+  --duration-reveal: 360ms;
+}
 
 html {
   scroll-behavior: smooth;
@@ -36,7 +49,293 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-headline);
-  color: var(--color-ink-navy);
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-headline);
+    color: var(--color-ink-navy);
+  }
+}
+
+/* ─── Institutional Motion Utilities ──────────────────────────────────────── */
+
+.btn-press {
+  transition: transform var(--duration-fast) var(--ease-institutional),
+              background-color var(--duration-fast) var(--ease-institutional),
+              opacity var(--duration-fast) var(--ease-institutional),
+              box-shadow var(--duration-fast) var(--ease-institutional);
+}
+.btn-press:hover {
+  transform: translateY(-1px);
+}
+.btn-press:active {
+  transform: scale(0.98);
+}
+
+.arrow-shift {
+  display: inline-block;
+  transition: transform var(--duration-fast) var(--ease-institutional);
+  will-change: transform;
+}
+.group:hover .arrow-shift,
+a:hover .arrow-shift,
+button:hover .arrow-shift {
+  transform: translateX(3px);
+}
+
+.link-underline {
+  position: relative;
+  text-decoration: none;
+}
+.link-underline::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: bottom left;
+  transition: transform var(--duration-fast) var(--ease-institutional);
+}
+.link-underline:hover::after {
+  transform: scaleX(1);
+}
+
+/* ─── Hero Stagger Reveal Animation ───────────────────────────────────────── */
+
+@keyframes heroReveal {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-reveal-1 {
+  animation: heroReveal 500ms cubic-bezier(0.22, 1, 0.36, 1) 0ms both;
+}
+.hero-reveal-2 {
+  animation: heroReveal 500ms cubic-bezier(0.22, 1, 0.36, 1) 90ms both;
+}
+.hero-reveal-3 {
+  animation: heroReveal 500ms cubic-bezier(0.22, 1, 0.36, 1) 180ms both;
+}
+.hero-reveal-4 {
+  animation: heroReveal 500ms cubic-bezier(0.22, 1, 0.36, 1) 270ms both;
+}
+.hero-reveal-5 {
+  animation: heroReveal 500ms cubic-bezier(0.22, 1, 0.36, 1) 360ms both;
+}
+
+html.hero-animated .hero-reveal-1,
+html.hero-animated .hero-reveal-2,
+html.hero-animated .hero-reveal-3,
+html.hero-animated .hero-reveal-4,
+html.hero-animated .hero-reveal-5 {
+  animation: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* ─── Product Card Sequential In-View Animation ───────────────────────────── */
+
+@keyframes cardReveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.product-card-reveal-0 {
+  animation: cardReveal 360ms cubic-bezier(0.22, 1, 0.36, 1) 0ms both;
+}
+.product-card-reveal-1 {
+  animation: cardReveal 360ms cubic-bezier(0.22, 1, 0.36, 1) 70ms both;
+}
+.product-card-reveal-2 {
+  animation: cardReveal 360ms cubic-bezier(0.22, 1, 0.36, 1) 140ms both;
+}
+
+/* ─── Product Guide Row Animations ────────────────────────────────────────── */
+
+@keyframes dividerWipe {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.category-row-wrapper .category-divider {
+  transform: scaleX(0);
+  transform-origin: left;
+}
+.category-row-wrapper.is-in-view .category-divider {
+  animation: dividerWipe 360ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes rowBodyReveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.category-row-wrapper .category-body {
+  opacity: 0;
+  transform: translateY(12px);
+}
+.category-row-wrapper.is-in-view .category-body {
+  animation: rowBodyReveal 360ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes subCardReveal {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.category-row-wrapper .sub-card-1 {
+  opacity: 0;
+  transform: translateY(10px);
+}
+.category-row-wrapper.is-in-view .sub-card-1 {
+  animation: subCardReveal 350ms cubic-bezier(0.22, 1, 0.36, 1) 200ms both;
+}
+
+.category-row-wrapper .sub-card-2 {
+  opacity: 0;
+  transform: translateY(10px);
+}
+.category-row-wrapper.is-in-view .sub-card-2 {
+  animation: subCardReveal 350ms cubic-bezier(0.22, 1, 0.36, 1) 400ms both;
+}
+
+/* ─── Timeline Animations ─────────────────────────────────────────────────── */
+
+@keyframes timelineLineGrow {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+.timeline-line-grow {
+  transform-origin: top;
+  animation: timelineLineGrow 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes dotFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.timeline-dot-0 {
+  animation: dotFadeIn 400ms cubic-bezier(0.22, 1, 0.36, 1) 150ms both;
+}
+.timeline-dot-1 {
+  animation: dotFadeIn 400ms cubic-bezier(0.22, 1, 0.36, 1) 500ms both;
+}
+.timeline-dot-2 {
+  animation: dotFadeIn 400ms cubic-bezier(0.22, 1, 0.36, 1) 850ms both;
+}
+
+@keyframes timelineItemFade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.timeline-item-0 {
+  animation: timelineItemFade 450ms cubic-bezier(0.22, 1, 0.36, 1) 180ms both;
+}
+.timeline-item-1 {
+  animation: timelineItemFade 450ms cubic-bezier(0.22, 1, 0.36, 1) 530ms both;
+}
+.timeline-item-2 {
+  animation: timelineItemFade 450ms cubic-bezier(0.22, 1, 0.36, 1) 880ms both;
+}
+
+/* ─── Annual Return Table Row Animations ──────────────────────────────────── */
+
+@keyframes rowFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.table-row-reveal-0 {
+  animation: rowFadeIn 350ms cubic-bezier(0.22, 1, 0.36, 1) 0ms both;
+}
+.table-row-reveal-1 {
+  animation: rowFadeIn 350ms cubic-bezier(0.22, 1, 0.36, 1) 50ms both;
+}
+.table-row-reveal-2 {
+  animation: rowFadeIn 350ms cubic-bezier(0.22, 1, 0.36, 1) 100ms both;
+}
+
+/* ─── FAQ Smooth Details Transition ───────────────────────────────────────── */
+
+@keyframes faqOpen {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+details[open] summary ~ * {
+  animation: faqOpen 200ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ─── Reduced Motion Override ─────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
